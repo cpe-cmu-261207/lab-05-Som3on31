@@ -1,11 +1,46 @@
 import React from 'react';
-import { useState } from 'react'
+import { useState } from 'react';
+import Task from './Task'
 
 function App() {
 
+  let [tasks, setTasks] = useState(<div></div>)
+  let [input, setInput] = useState('')
+  // let [innerHTML, setInnerHTML] = useState() unused
+
+
+
+  const addTask = () => {
+    /* check pressing enter key here */
+    if (input === '') alert('Task cannot be empty')
+    else {
+      setTasks(<div><Task name="{input}"></Task>{tasks.props.children}</div>)
+      document.querySelectorAll('input')[0].value = ''
+      setInput('')
+    }
+  }
+
   const onKeyDownCallback = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     /* check pressing enter key here */
+    if (ev.key === 'enter') addTask()
   }
+
+
+  const delete_btn = () => {
+
+  }
+
+  const done_btn = () => {
+
+  }
+
+
+
+
+
+
+
+
 
   return (
     <div>
@@ -21,37 +56,12 @@ function App() {
 
         {/* task input and add button */}
         <div className='flex space-x-1'>
-          <input className='border border-gray-400 w-full text-2xl'
+          <input id='input' className='border border-gray-400 w-full text-2xl'
             onKeyDown={onKeyDownCallback} ></input>
-          <button className='border border-gray-400 w-8 font-bold'>+</button>
+          <button id='addButton' onClick={addTask} className='border border-gray-400 w-8 font-bold'>+</button>
         </div>
 
-        {/* tasks section */}
-        <div>
-          {/* task example */}
-          {/* Please convert this into a task component */}
-          <div
-            className="flex justify-between h-8 items-center py-6 border-b"
-          >
-            <span className="text-2xl"> I am a task </span>
-            <div className="flex space-x-1 items-center">
-              <button className="bg-green-400 w-24 text-2xl" >Done</button>
-              <button className="bg-red-400 w-24 text-2xl" >Delete</button>
-            </div>
-          </div>
-
-          {/* another task example */}
-          <div
-            className="flex justify-between h-8 items-center py-6 border-b"
-          >
-            <span className="text-2xl"> I am another task </span>
-            <div className="flex space-x-1 items-center">
-              <button className="bg-green-400 w-24 text-2xl" >Done</button>
-              <button className="bg-red-400 w-24 text-2xl" >Delete</button>
-            </div>
-          </div>
-
-        </div>
+        
       </div>
 
       {/* footer section */}
