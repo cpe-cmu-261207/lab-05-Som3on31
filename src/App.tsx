@@ -12,9 +12,10 @@ function App() {
 
   const addTask = () => {
     /* check pressing enter key here */
-    if (input === '') alert('Task cannot be empty')
+    if (input === '') alert('Task cannot be empty.')
     else {
-      setTasks(<div><Task name="{input}"></Task>{tasks.props.children}</div>)
+      // console.log(input)
+      setTasks(<div><Task name={input}></Task>{tasks.props.children}</div>)
       document.querySelectorAll('input')[0].value = ''
       setInput('')
     }
@@ -22,19 +23,12 @@ function App() {
 
   const onKeyDownCallback = (ev: React.KeyboardEvent<HTMLInputElement>) => {
     /* check pressing enter key here */
-    if (ev.key === 'enter') addTask()
+    if (ev.key === 'Enter') addTask()
   }
 
-
-  const delete_btn = () => {
-
-  }
-
-  const done_btn = () => {
+  const kek = () => {
 
   }
-
-
 
 
 
@@ -57,11 +51,13 @@ function App() {
         {/* task input and add button */}
         <div className='flex space-x-1'>
           <input id='input' className='border border-gray-400 w-full text-2xl'
-            onKeyDown={onKeyDownCallback} ></input>
+            onKeyDown={onKeyDownCallback} onChange = {ev => {input = ev.target.value}}></input>
           <button id='addButton' onClick={addTask} className='border border-gray-400 w-8 font-bold'>+</button>
         </div>
 
-        
+
+        {tasks}
+
       </div>
 
       {/* footer section */}
