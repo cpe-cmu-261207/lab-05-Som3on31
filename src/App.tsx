@@ -11,7 +11,6 @@ function App() {
 
 
   const addTask = () => {
-    /* check pressing enter key here */
     if (input === '') alert('Task cannot be empty.')
     else {
       // console.log(input)
@@ -22,14 +21,8 @@ function App() {
   }
 
   const onKeyDownCallback = (ev: React.KeyboardEvent<HTMLInputElement>) => {
-    /* check pressing enter key here */
-    if (ev.key === 'Enter') addTask()
+    if (ev.key === 'Enter') addTask() /* check pressing enter key here */
   }
-
-  const kek = () => {
-
-  }
-
 
 
 
@@ -54,7 +47,6 @@ function App() {
             onKeyDown={onKeyDownCallback} onChange = {ev => {input = ev.target.value}}></input>
           <button id='addButton' onClick={addTask} className='border border-gray-400 w-8 font-bold'>+</button>
         </div>
-
 
         {tasks}
 
