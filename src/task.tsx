@@ -13,12 +13,17 @@ function Task(task: task2Type) {
 
     const hide = () => setVisible(false)
 
+    const isDone = () => {
+        setDone(true)
+    }
+
+
     return (
         <div className="flex justify-between h-8 items-center py-6 border-b" onMouseEnter={show} onMouseLeave={hide}>
-            <span className="text-2xl"> {task.name} </span>
+            <span className="text-2xl"> {done ? <del>{task.name}</del> : task.name} </span>
             <div className="flex space-x-1 items-center">
-                <button className="bg-green-400 w-24 text-2xl">{visible && done!=true ? 'Done' : ''}</button>
-                <button className="bg-red-400 w-24 text-2xl">{visible && done!=true ? 'Delete' : ''}</button>
+                <button className="bg-green-400 w-24 text-2xl" onClick={isDone}>{visible && done != true ? 'Done' : ''}</button>
+                <button className="bg-red-400 w-24 text-2xl">{visible && done != true ? 'Delete' : ''}</button>
             </div>
         </div>
     )

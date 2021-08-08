@@ -8,13 +8,14 @@ function App() {
   let [input, setInput] = useState('')
   // let [innerHTML, setInnerHTML] = useState() unused
 
-
+  let taskList = []
 
   const addTask = () => {
     if (input === '') alert('Task cannot be empty.')
     else {
       // console.log(input)
       setTasks(<div><Task name={input}></Task>{tasks.props.children}</div>)
+      taskList.push(input)
       document.querySelectorAll('input')[0].value = ''
       setInput('')
     }
