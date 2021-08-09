@@ -2,7 +2,10 @@ import { useState } from 'react';
 
 
 type taskData = {
+    id: number;
     name: string;
+    finishFN: Function;
+    deleteFN: Function;
 }
 
 function Task(task: taskData) {
@@ -20,8 +23,8 @@ function Task(task: taskData) {
         <div className="flex justify-between h-8 items-center py-6 border-b" onMouseEnter={show} onMouseLeave={hide}>
             <span className="text-2xl"> {done ? <del>{task.name}</del> : task.name} </span>
             <div className="flex space-x-1 items-center">
-                <button className="bg-green-400 w-24 text-2xl" onClick={isDone}>{visible && done != true ? 'Done' : ''}</button>
-                <button className="bg-red-400 w-24 text-2xl">{visible && done != true ? 'Delete' : ''}</button>
+                <button className="bg-green-400 w-24 text-2xl" onClick={() => task.finishFN(task.id)}>{visible && done != true ? 'Done' : ''}</button>
+                <button className="bg-red-400 w-24 text-2xl" onClick={() => task.deleteFN(task.id)}>{visible && done != true ? 'Delete' : ''}</button>
             </div>
         </div>
     )
