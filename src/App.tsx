@@ -1,9 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
-import header from './component/Header';
+import Header from './component/Header';
 import Task from './component/Task';
-
-
+import Footer from './component/Footer';
+import TaskList from './component/TaskList';
 
 
 function App() {
@@ -18,7 +18,6 @@ function App() {
     if (input === '') alert('Task cannot be empty.')
     else {
       // console.log(input)
-
       setTasks(<div><Task name={input}></Task>{tasks.props.children}</div>)
       taskList.push(input)
       document.querySelectorAll('input')[0].value = ''
@@ -34,9 +33,8 @@ function App() {
     <div>
 
       {/* header section */}
-      <header/>
-z
-
+      <Header/>
+      
 
       <div className='flex space-x-1'>
         <input id='input' className='border border-gray-400 w-full text-2xl' onKeyDown={onKeyDownCallback} onChange={ev => { input = ev.target.value }}></input>
@@ -47,10 +45,7 @@ z
       {/*Tasks*/}
       {tasks}
 
-      <div>
-        {/* footer section */}
-        <p className='text-center text-gray-400'> Copyright © 2021 </p>
-      </div >
+      <Footer/>
     </div>
 
   );
