@@ -25,10 +25,7 @@ function App() {
     if (ev.key === 'Enter') addTask() /* check pressing enter key here */
   }
 
-
-
-
-
+  
 
   return (
     <div>
@@ -45,12 +42,13 @@ function App() {
         {/* task input and add button */}
         <div className='flex space-x-1'>
           <input id='input' className='border border-gray-400 w-full text-2xl'
-            onKeyDown={onKeyDownCallback} onChange = {ev => {input = ev.target.value}}></input>
+            onKeyDown={onKeyDownCallback} onChange={ev => { input = ev.target.value }}></input>
           <button id='addButton' onClick={addTask} className='border border-gray-400 w-8 font-bold'>+</button>
         </div>
 
+        {/*Tasks*/}
         {tasks}
-
+        
       </div>
 
       {/* footer section */}
