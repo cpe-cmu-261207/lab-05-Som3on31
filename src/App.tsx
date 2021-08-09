@@ -1,6 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-import Task from './Task'
+import header from './component/Header';
+import Task from './component/Task';
+
+
+
 
 function App() {
 
@@ -14,6 +18,7 @@ function App() {
     if (input === '') alert('Task cannot be empty.')
     else {
       // console.log(input)
+
       setTasks(<div><Task name={input}></Task>{tasks.props.children}</div>)
       taskList.push(input)
       document.querySelectorAll('input')[0].value = ''
@@ -22,36 +27,32 @@ function App() {
   }
 
   const onKeyDownCallback = (ev: React.KeyboardEvent<HTMLInputElement>) => {
-    if (ev.key === 'Enter') addTask() /* check pressing enter key here */
+    if (ev.key == "Enter") addTask()
   }
 
   return (
     <div>
 
       {/* header section */}
-      <div className='flex justify-center items-end space-x-2'>
-        <span className='text-center italic my-2 text-2xl'>Minimal Todo List </span>
-        <span className='text-gray-400 italic my-2 text-xl'>by Saharit Kadkasem 630610767</span>
+      <header/>
+z
+
+
+      <div className='flex space-x-1'>
+        <input id='input' className='border border-gray-400 w-full text-2xl' onKeyDown={onKeyDownCallback} onChange={ev => { input = ev.target.value }}></input>
+        <button id='addButton' onClick={() => addTask()} className='border border-gray-400 w-8 font-bold'>+</button>
       </div>
 
-      {/* todo section */}
-      <div className='mx-auto max-w-4xl'>
 
-        {/* task input and add button */}
-        <div className='flex space-x-1'>
-          <input id='input' className='border border-gray-400 w-full text-2xl'
-            onKeyDown={onKeyDownCallback} onChange={ev => { input = ev.target.value }}></input>
-          <button id='addButton' onClick={addTask} className='border border-gray-400 w-8 font-bold'>+</button>
-        </div>
+      {/*Tasks*/}
+      {tasks}
 
-        {/*Tasks*/}
-        {tasks}
-        
-      </div>
-
-      {/* footer section */}
-      <p className='text-center text-gray-400'> Copyright © 2021 </p>
+      <div>
+        {/* footer section */}
+        <p className='text-center text-gray-400'> Copyright © 2021 </p>
+      </div >
     </div>
+
   );
 }
 
