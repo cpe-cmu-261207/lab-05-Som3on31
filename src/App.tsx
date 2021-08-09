@@ -25,8 +25,6 @@ function App() {
     if (ev.key === 'Enter') addTask() /* check pressing enter key here */
   }
 
-  
-
   return (
     <div>
 
