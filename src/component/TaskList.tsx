@@ -53,8 +53,6 @@ function TaskList() {
             <div className='flex space-x-1'>
                 <input id='input' className='border border-gray-400 w-full text-2xl' onKeyDown={onKeyDownCallback} onChange={ev => { input = ev.target.value }}></input>
                 <button id='addButton' onClick={() => addTask(input)} className='border border-gray-400 w-8 font-bold'>+</button>
-
-
             </div>
             <div>
                 {tasks.map(x => <Task name={x.name} id={x.id} finishFN={finishBtn} deleteFN={deleteBtn} />)}
